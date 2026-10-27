@@ -340,7 +340,7 @@ def main():
         out[f"divider-{i:02d}.svg"] = divider(num, label)
     if s:
         out["stats.svg"] = stats(s)
-        out["featured.svg"] = featured(s)
+        out["featured-project.svg"] = featured(s)
     for name, content in out.items():
         with open(os.path.join(ASSETS, name), "w", encoding="utf-8", newline="\n") as f:
             f.write(content)

@@ -14,7 +14,7 @@ Undergrad at **IIT** who likes turning ideas into apps people actually use. Late
 
 <img src="./assets/divider-02.svg" width="100%" alt="02 Projects" />
 
-<img src="./assets/featured.svg" width="100%" alt="Featured solo project: Sana. A calm AI companion for emotional support, by text or voice." />
+<img src="./assets/featured-project.svg" width="100%" alt="Featured solo project: Sana. A calm AI companion for emotional support, by text or voice." />
 
 **Team builds**, made with friends:
 
