@@ -23,11 +23,11 @@ NAME = "NITHIKA"
 TAGLINE = "UNDERGRAD @ IIT  ·  AI APPS  ·  FULL-STACK  ·  HACKATHONS"
 
 FEATURED = {
-    "name": "Studimate",
-    "repo": f"{USER}/studimate",
-    "desc": "An AI study companion. Upload your PDFs and it builds an adaptive 7-day study plan, "
-            "generates quizzes from your notes, and gives you a tutor you can talk to by text or voice.",
-    "tags": ["NEXT.JS", "TYPESCRIPT", "SUPABASE", "LLM"],
+    "name": "Sana",
+    "repo": f"{USER}/sana-emotional-support",
+    "desc": "A calm AI companion for emotional support. Chat by text or voice, it remembers the "
+            "conversation, and it installs on your phone as an app.",
+    "tags": ["PYTHON", "LLM", "VOICE", "PWA"],
 }
 DIVIDERS = [
     ("01", "ORIGIN"),
@@ -277,17 +277,20 @@ def featured(s):
         markup, w = tag(x, 228, t, INDIGO if len(tags) % 2 else JADE)
         tags.append(markup)
         x += w + 10
-    # a little stack of notebook pages on the right
-    pages = "".join(f'<rect x="{870 + i * 22}" y="{70 + i * 18}" width="200" height="150" rx="12" '
-                    f'fill="#0f2230" stroke="{c}" stroke-opacity=".6" transform="rotate({-8 + i * 6} {970 + i * 22} {145 + i * 18})"/>'
-                    for i, c in enumerate([INDIGO, SAKURA, JADE]))
-    lines_on_page = "".join(f'<rect x="{935}" y="{132 + i * 16}" width="{140 - i * 18}" height="5" rx="2.5" fill="{TEXT}" fill-opacity=".25"/>'
-                            for i in range(5))
+    # a gentle conversation on the right: two chat bubbles and a heart
+    bubbles = (f'<rect x="850" y="66" width="220" height="70" rx="22" fill="#0f2230" stroke="{INDIGO}" stroke-opacity=".6"/>'
+               f'<path d="M872 134l-8 18 26-16z" fill="#0f2230" stroke="{INDIGO}" stroke-opacity=".6"/>'
+               + "".join(f'<rect x="872" y="{88 + i * 18}" width="{170 - i * 60}" height="6" rx="3" fill="{TEXT}" fill-opacity=".25"/>'
+                         for i in range(2))
+               + f'<rect x="930" y="160" width="200" height="62" rx="22" fill="{JADE}" fill-opacity=".1" stroke="{JADE}" stroke-opacity=".6"/>'
+               f'<path d="M1110 220l8 16-24-14z" fill="#0d2329" stroke="{JADE}" stroke-opacity=".6"/>'
+               + "".join(f'<circle cx="{985 + i * 22}" cy="191" r="5" fill="{JADE}" class="breathe" '
+                         f'style="animation-delay:{i * .4:.1f}s;animation-duration:1.8s"/>' for i in range(3)))
+    heart = (f'<path d="M1125 72c-10-16-34-8-30 10 3 12 30 28 30 28s27-16 30-28c4-18-20-26-30-10z" '
+             f'fill="{SAKURA}" fill-opacity=".85" class="breathe"/>')
     body = f'''
 {ripples(1000, 270, 6, 60, SAKURA, .18)}
-{pages}{lines_on_page}
-<circle cx="1072" cy="128" r="20" fill="{JADE}" fill-opacity=".15" stroke="{JADE}"/>
-<path d="M1063 128l6 6 12-13" fill="none" stroke="{JADE}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+{bubbles}{heart}
 <text x="48" y="58" class="m" font-size="13" fill="{SAKURA}" letter-spacing="3">FEATURED PROJECT</text>
 <text x="48" y="112" class="d" font-weight="700" font-size="44" fill="{TEXT}">{escape(f["name"])}</text>
 <text x="{60 + len(f["name"]) * 27}" y="110" class="m" font-size="15" fill="{DIM}">★ {s["featured_stars"]}</text>
